@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RecordsService } from '../records.service';
 
 @Component({
   selector: 'app-list',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private recordsService: RecordsService) { }
 
   ngOnInit() {
+
+    this.recordsService.getRecords().subscribe((records => {
+      console.log(records)
+    }))
   }
 
 }

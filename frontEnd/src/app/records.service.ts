@@ -10,15 +10,15 @@ export class RecordsService {
 
   constructor(private http: HttpClient) { }
 
-  getIssues() {
+  getRecords() {
     return this.http.get(`${this.uri}/records`);
   }
 
-  getIssueById(id) {
+  getRecordById(id) {
     return this.http.get(`${this.uri}/records/${id}`);
   }
 
-  addIssue(artist, title, genre, rating) {
+  addRecord(artist, title, genre, rating) {
     const record = {
       artist: artist,
       title: title,
@@ -28,7 +28,7 @@ export class RecordsService {
     return this.http.post(`${this.uri}/records/add`, record);
   }
 
-  updateIssue(id, artist, title, genre, rating) {
+  updateRecord(id, artist, title, genre, rating) {
     const record = {
       artist: artist,
       title: title,

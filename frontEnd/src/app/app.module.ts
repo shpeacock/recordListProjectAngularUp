@@ -34,7 +34,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     MatToolbarModule
   ],
-  providers: [IssueService],
+  providers: [RecordsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
