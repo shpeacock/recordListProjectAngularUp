@@ -38,7 +38,7 @@ export class RecordsService {
     return this.http.post(`${this.uri}/records/update/${id}`, record);
   }
 
-  deleteIssue(id) {
+  deleteRecord(id) {
     return this.http.get(`${this.uri}/record/delete/${id}`);
   }
 }
