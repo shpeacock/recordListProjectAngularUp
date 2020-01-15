@@ -12,7 +12,7 @@ import { RecordsService } from '../records.service';
 export class CreateComponent implements OnInit {
 
   createForm: FormGroup;
-  rating = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
 
 
   constructor(private recordService: RecordsService, private fb: FormBuilder, private router: Router) {
@@ -20,7 +20,7 @@ export class CreateComponent implements OnInit {
       title: ['', Validators.required],
       artist: '',
       genre: '',
-      rating: ''
+      rating: Number,
     });
   }
 

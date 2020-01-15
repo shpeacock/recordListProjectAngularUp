@@ -31,15 +31,26 @@ export class EditComponent implements OnInit {
       title: ['', Validators.required],
       artist: '',
       genre: '',
-      rating: '',
+      rating: Number,
     });
   }
+
   addIssue(title, artist, genre, rating) {
     this.recordService.addRecord(title, artist, genre, rating).subscribe(() => {
       this.router.navigate(['/list']);
     })
   }
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.id = params.id;
+      this.recordService.getRecordById(this.id).subscribe(res => {
+        this.record = res;;
+        this.updateForm.get('title').setValue(this.record.title);
+        this.updateForm.get('artist').setValue(this.record.artist);
+        this.updateForm.get('genre').setValue(this.record.genre);
+        this.updateForm.get('rating').setValue(this.record.rating);
+      });
+    });
   }
 
   updateIssue(title, artist, genre, rating) {
