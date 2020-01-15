@@ -14,7 +14,7 @@ export class ListComponent implements OnInit {
   constructor(private recordsService: RecordsService, private router: Router) { }
 
   records: Record[];
-  displayedColumns = ['title', 'artist', 'genre', 'rating'];
+  displayedColumns = ['title', 'artist', 'genre', 'rating', 'actions'];
 
   ngOnInit() {
     this.fetchRecords();
@@ -23,7 +23,6 @@ export class ListComponent implements OnInit {
   fetchRecords() {
     this.recordsService.getRecords().subscribe((data: Record[]) => {
       this.records = data;
-      console.log(this.records);
     });
   }
 
@@ -32,7 +31,8 @@ export class ListComponent implements OnInit {
   }
 
   deleteRecord(id) {
-    this.recordsService.deleteRecord(id);
+    this.recordsService.deleteRecord(id).subscribe(() => {
+      this.fetchRecords();
+    });
   }
-
 }

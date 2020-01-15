@@ -18,27 +18,29 @@ export class RecordsService {
     return this.http.get(`${this.uri}/records/${id}`);
   }
 
-  addRecord(artist, title, genre, rating) {
+  addRecord(title, artist, genre, rating) {
     const record = {
-      artist: artist,
       title: title,
+      artist: artist,
       genre: genre,
       rating: rating
     };
     return this.http.post(`${this.uri}/records/add`, record);
   }
 
-  updateRecord(id, artist, title, genre, rating) {
+  updateRecord(id, title, artist, genre, rating) {
     const record = {
-      artist: artist,
       title: title,
+      artist: artist,
       genre: genre,
       rating: rating
     };
+    console.log(id);
     return this.http.post(`${this.uri}/records/update/${id}`, record);
   }
 
   deleteRecord(id) {
-    return this.http.get(`${this.uri}/record/delete/${id}`);
+    console.log('hitting the service');
+    return this.http.get(`${this.uri}/records/delete/${id}`);
   }
 }

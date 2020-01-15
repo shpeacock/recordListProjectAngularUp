@@ -1,3 +1,36 @@
-<p>
-  create works!
-</p>
+<div>
+    <br>
+    <mat-card>
+        <section class="mat-typography">
+            <h3>Create A New Record</h3>
+        </section>
+        <mat-divider></mat-divider>
+        <br>
+        <form [formGroup]="createForm" class="create-form">
+            <mat-form-field class="field-full-width">
+                <input matInput placeholder="Record Title" formControlName="title" #title>
+                <!-- <mat-error *ngIf="createForm.controls['title'].errors.required">
+                    Title is <strong>required</strong>
+                </mat-error> -->
+            </mat-form-field>
+            <mat-form-field class="field-full-width">
+                <input matInput placeholder="Artist" formControlName="artist" #artist>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select placeholder="Genre" formControlName="genre" #genre>
+                    <mat-option value="Rock">Rock</mat-option>
+                    <mat-option value="Post-Hardcore">Post-Hardcore</mat-option>
+                    <mat-option value="Punk">Punk</mat-option>
+                    <mat-option value="Metalcore">Metalcore</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="field-full-width">
+                <input matInput type="number" formControlName="rating" placeholder="rating" min="1" max="10">
+            </mat-form-field>
+            <mat-divider></mat-divider>
+            <br><br>
+            <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
+            <button type="submit" (click)="addRecord(title.value, artist.value, genre.value, rating.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
+        </form>
+    </mat-card>
+</div>

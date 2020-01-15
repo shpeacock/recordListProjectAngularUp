@@ -4,6 +4,7 @@
         <button mat-raised-button color="primary" routerLink="/create">
       Add A Record
     </button>
+        <br><br>
         <mat-divider></mat-divider>
         <br>
         <table mat-table [dataSource]="records">
@@ -28,15 +29,14 @@
             </ng-container>
 
             <ng-container matColumnDef="actions">
-                <th mat-header-cel *matHeaderCellDef>Actions</th>
-                <td mat-cell *matCellDef="let element">
-                    <button mat-button color="primary" (click)="editRecord(element._id)">Edit Record</button>
-                    <button mat-button color="primary" (click)="deleteRecord(element._id)">Delete Record</button>
+                <th mat-header-cell *matHeaderCellDef class="mat-column-right">Actions</th>
+                <td mat-cell *matCellDef="let element" class="mat-column-right">
+                    <button mat-button color="primary" (click)="editRecord(element._id)">Edit</button>
+                    <button mat-button color="warn" (click)="deleteRecord(element._id)">Delete</button>
                 </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
         </table>
     </mat-card>
 </div>

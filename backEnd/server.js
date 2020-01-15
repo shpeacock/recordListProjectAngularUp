@@ -12,7 +12,7 @@ const router = express.Router();
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27017/records', { useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/records', { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false });
 
 const connection = mongoose.connection;
 
@@ -30,6 +30,7 @@ router.route('/records').get((req, res) => {
 });
 
 router.route('/records/:id').get((req, res) => {
+    console.log('hitting the servier');
     Record.findById(req.params.id, (err, record) => {
         if (err)
             console.log(err);
@@ -54,8 +55,8 @@ router.route('/records/update/:id').post((req, res) => {
         if (!record)
             return next(new Error('Could not load document'));
         else {
-            record.artist = req.body.artist;
             record.title = req.body.title;
+            record.artist = req.body.artist;
             record.genre = req.body.genre;
             record.rating = req.body.rating;
 
@@ -68,14 +69,14 @@ router.route('/records/update/:id').post((req, res) => {
     });
 });
 
-router.route('/record/delete/:id').get((req, res) => {
-    Issue.findByIdAndRemove({ _id: req.params.id }, (err, record) => {
+router.route('/records/delete/:id').get((req, res) => {
+    Record.findByIdAndRemove({ _id: req.params.id }, (err, record) => {
         if (err)
             res.json(err);
         else
             res.json('Remove successfully');
-    });
-});
+    })
+})
 
 app.use('/', router);
 app.listen(4000, () => console.log('express server running on port 4000'));
