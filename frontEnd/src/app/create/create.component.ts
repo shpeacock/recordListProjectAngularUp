@@ -31,7 +31,6 @@ export class CreateComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.rating);
   }
 
 }
