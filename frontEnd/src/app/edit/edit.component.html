@@ -28,7 +28,7 @@
             <mat-divider></mat-divider>
             <br><br>
             <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
-            <button type="submit" (click)="updateIssue(title.value, artist.value, genre.value, rating.value)" [disabled]="updateForm.pristine || updateForm.invalid" mat-raised-button color="primary">Save</button>
+            <button type="submit" (click)="updateRecord(title.value, artist.value, genre.value, rating.value)" [disabled]="updateForm.pristine || updateForm.invalid" mat-raised-button color="primary">Save</button>
         </form>
     </mat-card>
 </div>

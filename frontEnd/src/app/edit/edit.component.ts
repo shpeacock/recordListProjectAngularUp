@@ -35,11 +35,6 @@ export class EditComponent implements OnInit {
     });
   }
 
-  addIssue(title, artist, genre, rating) {
-    this.recordService.addRecord(title, artist, genre, rating).subscribe(() => {
-      this.router.navigate(['/list']);
-    })
-  }
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.id = params.id;
@@ -53,11 +48,13 @@ export class EditComponent implements OnInit {
     });
   }
 
-  updateIssue(title, artist, genre, rating) {
+  updateRecord(title, artist, genre, rating) {
     this.recordService.updateRecord(this.id, title, artist, genre, rating).subscribe(() => {
       this.snackBar.open('Record updated successfully', 'OK', {
         duration: 3000
       });
+      this.router.navigate(['/']);
+
     });
   }
 

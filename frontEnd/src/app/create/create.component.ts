@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RecordsService } from '../records.service';
@@ -9,7 +9,7 @@ import { RecordsService } from '../records.service';
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
-export class CreateComponent implements OnInit {
+export class CreateComponent {
 
   createForm: FormGroup;
 
@@ -28,10 +28,6 @@ export class CreateComponent implements OnInit {
     this.recordService.addRecord(title, artist, genre, rating).subscribe(() => {
       this.router.navigate(['/list']);
     });
-  }
-
-  ngOnInit() {
-    console.log(this.rating);
   }
 
 }
